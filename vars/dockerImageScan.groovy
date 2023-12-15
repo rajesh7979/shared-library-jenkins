@@ -1,7 +1,7 @@
 
   def call() {
     // Load Trivy parameters and perform Trivy scan
-   def loadTrivyParameters() {
+   def loadTrivyParameters() 
     try {
         def libraryRoot = libraryResource.rootDir.toString()
         def paramsFile = readYaml(file: "${libraryRoot}/../resources/params.yaml")
@@ -18,6 +18,5 @@
     } catch (Exception e) {
         error "Error loading Trivy parameters: ${e.message}"
     }
-}
 
 }
