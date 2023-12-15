@@ -1,0 +1,6 @@
+TARGET_ENV: "production"
+DEPLOY_ENABLED: true
+BUILD_TYPE: "release"
+# NUMBER_OF_INSTANCES: 5
+
+# Add more parameters as needed
