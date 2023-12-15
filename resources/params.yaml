@@ -1,0 +1,6 @@
+# Trivy parameters
+TRIVY_IMAGE: "aquasec/trivy:latest"
+DOCKERFILE_PATH: "Dockerfile"
+TARGET_IMAGE: "your-target-image:latest"
+SEVERITY_THRESHOLD: "HIGH"
+IGNORE_UNFIXED: false
