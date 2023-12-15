@@ -5,7 +5,7 @@ BUILD_TYPE: "release"
 
 TRIVY_IMAGE: "aquasec/trivy:latest"
 DOCKERFILE_PATH: "Dockerfile"
-TARGET_IMAGE: "your-target-image:latest"
+TARGET_IMAGE: "rajkavala/javapp:latest"
 
 # Trivy severity thresholds
 SEVERITY_THRESHOLD: "LOW"  # Allowed values: LOW, MEDIUM, HIGH, CRITICAL
