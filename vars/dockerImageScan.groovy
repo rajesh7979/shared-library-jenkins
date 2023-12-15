@@ -1,5 +1,5 @@
 // Load Trivy parameters with thresholds and report generation from params.yaml
-def loadTrivyParametersAndGenerateReport() {
+def call() {
     def libraryRoot = libraryResource.rootDir.toString()
     def paramsFile = readYaml(file: "${libraryRoot}/params.yaml")
 
