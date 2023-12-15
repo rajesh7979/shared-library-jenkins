@@ -1,7 +1,3 @@
-TARGET_ENV: "develop"
-DEPLOY_ENABLED: true
-BUILD_TYPE: "release"
-# NUMBER_OF_INSTANCES: 5
 
 TRIVY_IMAGE: "aquasec/trivy:latest"
 DOCKERFILE_PATH: "Dockerfile"
