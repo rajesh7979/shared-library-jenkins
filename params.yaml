@@ -8,7 +8,7 @@ DOCKERFILE_PATH: "Dockerfile"
 TARGET_IMAGE: "your-target-image:latest"
 
 # Trivy severity thresholds
-SEVERITY_THRESHOLD: "HIGH"  # Allowed values: LOW, MEDIUM, HIGH, CRITICAL
+SEVERITY_THRESHOLD: "LOW"  # Allowed values: LOW, MEDIUM, HIGH, CRITICAL
 IGNORE_UNFIXED: false       # Whether to ignore unfixed vulnerabilities
 
 # Build status thresholds based on vulnerabilities
