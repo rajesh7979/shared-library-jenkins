@@ -1,6 +1,17 @@
-TARGET_ENV: "production"
+TARGET_ENV: "develop"
 DEPLOY_ENABLED: true
 BUILD_TYPE: "release"
 # NUMBER_OF_INSTANCES: 5
+--
+TRIVY_IMAGE: "aquasec/trivy:latest"
+DOCKERFILE_PATH: "Dockerfile"
+TARGET_IMAGE: "your-target-image:latest"
 
+# Trivy severity thresholds
+SEVERITY_THRESHOLD: "HIGH"  # Allowed values: LOW, MEDIUM, HIGH, CRITICAL
+IGNORE_UNFIXED: false       # Whether to ignore unfixed vulnerabilities
+
+# Build status thresholds based on vulnerabilities
+BUILD_ON_FAILURE: false      # Whether to fail the build on vulnerabilities
+--
 # Add more parameters as needed
