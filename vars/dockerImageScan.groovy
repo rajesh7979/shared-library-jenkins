@@ -1,8 +1,8 @@
 def call() {
     def loadTrivyParameters = {
         try {
-            def libraryRoot = libraryResource.rootDir.toString()
-            def paramsFile = readYaml(file: "${libraryRoot}/../resources/params.yaml")
+          //  def libraryRoot = libraryResource.rootDir.toString()
+            def paramsFile = readYaml(file: "../resources/params.yaml")
 
             // Access Trivy parameters
             def trivyImage = paramsFile.TRIVY_IMAGE
