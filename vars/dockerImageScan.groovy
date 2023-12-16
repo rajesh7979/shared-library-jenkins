@@ -1,14 +1,25 @@
 def call() {
-    def readMyFile() {
-        try {
-            def fileContent = libraryResource('resources/params.yaml').yaml
-            println "Content of params.yaml: ${fileContent}"
-        } catch (Exception e) {
-            println "Error reading file: ${e.message}"
-        }
-    }
+    try {
+        def paramsFileContent = readFileFromWorkspace('params.yaml')
 
-    readMyFile()
+        def yaml = new groovy.yaml.Yaml().load(paramsFileContent)
+
+        // Accessing parameters from YAML
+        def trivyImage = yaml.TRIVY_IMAGE
+        def dockerfilePath = yaml.DOCKERFILE_PATH
+        def targetImage = yaml.TARGET_IMAGE
+        def severityThreshold = yaml.SEVERITY_THRESHOLD
+        def ignoreUnfixed = yaml.IGNORE_UNFIXED
+
+        // Use parameters as needed
+        println "Trivy Image: ${trivyImage}"
+        println "Dockerfile Path: ${dockerfilePath}"
+        println "Target Image: ${targetImage}"
+        println "Severity Threshold: ${severityThreshold}"
+        println "Ignore Unfixed: ${ignoreUnfixed}"
+    } catch (Exception e) {
+        println "Error reading params.yaml: ${e.message}"
+    }
 }
 
 
