@@ -2,8 +2,10 @@ def call() {
     def loadTrivyParameters = {
         try {
             def paramsFile = readFile("${env.WORKSPACE}/../resources/params.yaml")
+            def slurper = new groovy.json.JsonSlurper()
+            def params = slurper.parseText(paramsFile)
 
-            def params = new groovy.yaml.Yaml().parseText(paramsFile)
+         //   def params = new groovy.yaml.Yaml().parseText(paramsFile)
 
             // Access Trivy parameters
             def trivyImage = params.TRIVY_IMAGE
