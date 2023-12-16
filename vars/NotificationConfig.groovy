@@ -1,15 +1,17 @@
-def getTeamNotification(teamName) {
-    def configFile = "${WORKSPACE}/params.yaml" // Assuming the file is in the Jenkins job's workspace
-    def notificationConfig = [:]
+class NotificationConfig {
+    def getTeamNotification(teamName) {
+        def workspace = env.WORKSPACE
+        def configFile = "${workspace}/params.yaml"
+        def notificationConfig = [:]
 
-    try {
-        def configFileContent = readFile configFile
-        notificationConfig = readYaml text: configFileContent
-    } catch (FileNotFoundException e) {
-        println("File not found: ${configFile}")
-    } catch (Exception e) {
-        println("Failed to load notification configuration: ${e.message}")
+        try {
+            def configFileContent = readFile configFile
+            notificationConfig = readYaml text: configFileContent
+        } catch (Exception e) {
+            println("Failed to load notification configuration: ${e.message}")
+        }
+
+        def teamConfig = notificationConfig?.teams?.find { it.key == teamName }?.value
+        return teamConfig ?: [:]
     }
-
-    return notificationConfig?.teams[teamName] ?: [:]
 }
