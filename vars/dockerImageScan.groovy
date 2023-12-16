@@ -1,4 +1,4 @@
-def call() {
+def call(trivy) {
     try {
         def paramsFileContent = readFileFromWorkspace('params.yaml')
 
