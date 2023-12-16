@@ -1,37 +1,23 @@
 def call() {
-    def loadTrivyParameters = {
-        try {
-            def paramsFile = readFileFromWorkspace('resources/params.yaml')
+    try {
+        def paramsFileContent = readFileFromWorkspace('params.yaml')
 
-            def slurper = new groovy.yaml.YamlSlurper()
-            def params = slurper.parseText(paramsFile)
+        def yaml = new groovy.yaml.Yaml().load(paramsFileContent)
 
-            // Access Trivy parameters
-            def trivyImage = params.TRIVY_IMAGE
-            def dockerfilePath = params.DOCKERFILE_PATH
-            def targetImage = params.TARGET_IMAGE
-            def severityThreshold = params.SEVERITY_THRESHOLD
-            def ignoreUnfixed = params.IGNORE_UNFIXED
+        // Accessing parameters from YAML
+        def trivyImage = yaml.TRIVY_IMAGE
+        def dockerfilePath = yaml.DOCKERFILE_PATH
+        def targetImage = yaml.TARGET_IMAGE
+        def severityThreshold = yaml.SEVERITY_THRESHOLD
+        def ignoreUnfixed = yaml.IGNORE_UNFIXED
 
-            echo "Trivy Image: ${trivyImage}"
-            echo "Dockerfile Path: ${dockerfilePath}"
-            echo "Target Image: ${targetImage}"
-            echo "Severity Threshold: ${severityThreshold}"
-            echo "Ignore Unfixed: ${ignoreUnfixed}"
-
-            // Execute Trivy scan using the loaded parameters
-            sh "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock ${trivyImage} --file ${dockerfilePath} --severity ${severityThreshold.toLowerCase()} ${ignoreUnfixed ? '--ignore-unfixed' : ''} ${targetImage}"
-        } catch (Exception e) {
-            error "Error loading Trivy parameters: ${e.message}"
-        }
+        // Use parameters as needed
+        println "Trivy Image: ${trivyImage}"
+        println "Dockerfile Path: ${dockerfilePath}"
+        println "Target Image: ${targetImage}"
+        println "Severity Threshold: ${severityThreshold}"
+        println "Ignore Unfixed: ${ignoreUnfixed}"
+    } catch (Exception e) {
+        println "Error reading params.yaml: ${e.message}"
     }
-
-    // Call the closure to load Trivy parameters and perform the scan
-    loadTrivyParameters()
-}
-
-def readFileFromWorkspace(relativePath) {
-    def filePath = "${env.WORKSPACE}/${relativePath}"
-    def file = new File(filePath)
-    return file.text
 }
