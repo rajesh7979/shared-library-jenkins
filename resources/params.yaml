@@ -1,9 +1,12 @@
 # Trivy parameters
-TRIVY_IMAGE: "aquasec/trivy:latest"
-DOCKERFILE_PATH: "Dockerfile"
-TARGET_IMAGE: "rajkavala/javapp:latest"
-SEVERITY_THRESHOLD: "HIGH"
-IGNORE_UNFIXED: false
+trivy:
+ TRIVY_IMAGE: "aquasec/trivy:latest"
+ DOCKERFILE_PATH: "Dockerfile"
+ TARGET_IMAGE: "rajkavala/javapp:latest"
+ SEVERITY_THRESHOLD: "HIGH"
+ IGNORE_UNFIXED: false
+ severityThreshold: high
+ vulnThreshold: 10
 --
 sonarqube:
   qualityGate:
@@ -12,10 +15,10 @@ sonarqube:
 --
 teams:
   teamA:
-    notificationEnabled: ${TEAM_A_NOTIFICATION_ENABLED}
+    notificationEnabled: true
     teamsWebhook: ${TEAM_A_TEAMS_WEBHOOK}
 
   teamB:
-    notificationEnabled: ${TEAM_B_NOTIFICATION_ENABLED}
+    notificationEnabled: false
     teamsWebhook: ${TEAM_B_TEAMS_WEBHOOK}
 --
