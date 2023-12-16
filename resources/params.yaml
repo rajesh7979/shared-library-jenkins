@@ -4,3 +4,9 @@ DOCKERFILE_PATH: "Dockerfile"
 TARGET_IMAGE: "rajkavala/javapp:latest"
 SEVERITY_THRESHOLD: "HIGH"
 IGNORE_UNFIXED: false
+--
+sonarqube:
+  qualityGate:
+    passCondition: "CONDITION"
+    threshold: "5.0"
+--
