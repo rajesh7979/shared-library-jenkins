@@ -1,4 +1,18 @@
-def call(String project,String ImageTag, String hubUser){
+def call() {
+    def readMyFile() {
+        try {
+            def fileContent = libraryResource('resources/params.yaml').yaml
+            println "Content of params.yaml: ${fileContent}"
+        } catch (Exception e) {
+            println "Error reading file: ${e.message}"
+        }
+    }
+
+    readMyFile()
+}
+
+
+/*def call(String project,String ImageTag, String hubUser){
 
 //    def paramsFileContent = readFile("../resources/params.yaml")
 
@@ -11,7 +25,7 @@ def call(String project,String ImageTag, String hubUser){
   //    trivy image ${hubUser}/${project}:latest > report.html
   //    ls -R
  //   """
-}
+}*/
 
 /*def call() {
     def loadTrivyParameters = {
