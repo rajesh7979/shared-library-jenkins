@@ -1,5 +1,5 @@
 def getTeamNotification(teamName) {
-    def workspace = env.WORKSPACE
+
     def configFile = "${workspace}/params.yaml"
     def notificationConfig = [:]
 
