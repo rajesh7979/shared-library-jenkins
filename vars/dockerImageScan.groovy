@@ -1,7 +1,7 @@
 def call() {
     def loadTrivyParameters = {
         try {
-            def paramsFile = readFile("${env.WORKSPACE}/../resources/params.yaml")
+            def paramsFile = readFile("../resources/params.yaml")
             def slurper = new groovy.json.JsonSlurper()
             def params = slurper.parseText(paramsFile)
 
