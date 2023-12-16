@@ -1,7 +1,8 @@
 def call() {
     def loadTrivyParameters = {
         try {
-            def paramsFile = readFile("./resources/params.yaml")
+            def libraryRoot = libraryResource.rootDir.toString()
+            def paramsFile = readFile("${libraryRoot}/../resources/params.yaml")
             def slurper = new groovy.json.JsonSlurper()
             def params = slurper.parseText(paramsFile)
 
@@ -36,7 +37,7 @@ def call() {
     def loadTrivyParameters = {
         try {
           //  def libraryRoot = libraryResource.rootDir.toString()
-            def paramsFile = readYaml(file: "../resources/params.yaml")
+            def paramsFile = readYaml(file: "${libraryRoot}/../resources/params.yaml")
 
             // Access Trivy parameters
             def trivyImage = paramsFile.TRIVY_IMAGE
