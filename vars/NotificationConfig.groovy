@@ -1,4 +1,4 @@
-def getTeamNotification() {
+def getTeamNotification(teamName) {
     def configFile = "${WORKSPACE}/params.yaml" // Assuming the file is in the Jenkins job's workspace
     def notificationConfig = [:]
 
