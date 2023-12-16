@@ -2,7 +2,7 @@ def call() {
     try {
         def paramsFileContent = readFileFromWorkspace('params.yaml')
 
-        def yaml = new groovy.yaml.Yaml().load(paramsFileContent)
+        def yaml = readYamlText(paramsFileContent)
 
         // Accessing parameters from YAML
         def trivyImage = yaml.TRIVY_IMAGE
@@ -21,6 +21,20 @@ def call() {
         println "Error reading params.yaml: ${e.message}"
     }
 }
+
+def readFileFromWorkspace(relativePath) {
+    def filePath = "${env.WORKSPACE}/${relativePath}"
+    def file = new File(filePath)
+    return file.text
+}
+
+// Parse YAML content as a Map
+def readYamlText(text) {
+    def yaml = new org.yaml.snakeyaml.Yaml()
+    def obj = yaml.load(text)
+    return obj
+}
+
 
 
 /*def call(String project,String ImageTag, String hubUser){
