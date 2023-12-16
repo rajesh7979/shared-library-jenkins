@@ -1,7 +1,10 @@
 def call(String project,String ImageTag, String hubUser){
 
-    def paramsFileContent = readFile("../resources/params.yaml")
-    echo "Params File Content: ${paramsFileContent}"
+//    def paramsFileContent = readFile("../resources/params.yaml")
+
+    def libraryRoot = libraryResource.rootDir.toString()
+    echo "Params File Content: ${libraryRoot}"
+//    echo "Params File Content: ${paramsFileContent}"
 
 //    sh """
  //     ls -R
