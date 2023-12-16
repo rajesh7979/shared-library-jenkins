@@ -3,11 +3,11 @@ def call(String project,String ImageTag, String hubUser){
     def paramsFileContent = readFile("../resources/params.yaml")
     echo "Params File Content: ${paramsFileContent}"
 
-    sh """
-      ls -R
-      trivy image ${hubUser}/${project}:latest > report.html
-      ls -R
-    """
+//    sh """
+ //     ls -R
+  //    trivy image ${hubUser}/${project}:latest > report.html
+  //    ls -R
+ //   """
 }
 
 /*def call() {
