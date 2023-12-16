@@ -1,4 +1,3 @@
-import org.yaml.snakeyaml.Yaml
 
 def getConfig() {
     def workspace = pwd() // Get the workspace path
