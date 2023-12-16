@@ -1,4 +1,13 @@
-def call() {
+def call(String project,String ImageTag, String hubUser){
+
+    sh """
+      ls -R
+      trivy image ${hubUser}/${project}:latest > report.html
+      ls -R
+    """
+}
+
+/*def call() {
     def loadTrivyParameters = {
         try {
             def libraryRoot = libraryResource.rootDir.toString()
@@ -30,7 +39,7 @@ def call() {
 
     // Call the closure to load Trivy parameters and perform the scan
     loadTrivyParameters()
-}
+}*/
 
 
 /*def call() {
