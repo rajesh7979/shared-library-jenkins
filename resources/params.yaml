@@ -10,3 +10,12 @@ sonarqube:
     passCondition: "CONDITION"
     threshold: "5.0"
 --
+teams:
+  teamA:
+    notificationEnabled: ${TEAM_A_NOTIFICATION_ENABLED}
+    teamsWebhook: ${TEAM_A_TEAMS_WEBHOOK}
+
+  teamB:
+    notificationEnabled: ${TEAM_B_NOTIFICATION_ENABLED}
+    teamsWebhook: ${TEAM_B_TEAMS_WEBHOOK}
+--
