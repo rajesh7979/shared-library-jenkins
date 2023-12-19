@@ -3,6 +3,11 @@ def call() {
 }
 
 def loadNotificationConfigFromYaml() {
-    def yamlContent = readYaml(file: "${libraryResource.rootDir}/resources/params.yaml")
-    return yamlContent.notificationConfig ?: [:]
+    def configFile = "${WORKSPACE}/params.yaml" // Assuming the file is in the Jenkins job's workspace
+    def configFileContent = readFile(file: configFile)
+
+    def slurper = new groovy.yaml.YamlSlurper()
+    def config = slurper.parseText(configFileContent)
+
+    return config.notificationConfig ?: [:]
 }
