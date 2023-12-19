@@ -7,6 +7,6 @@ def call() {
 }
 
 def loadNotificationConfigFromYaml() {
-    def yamlContent = readYaml file: "${PWD}/params.yaml"
+    def yamlContent = readYaml file: "${PWD}/config.yaml"
     return yamlContent.notificationConfig ?: [:]
 }
