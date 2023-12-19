@@ -22,3 +22,7 @@ teams:
     notificationEnabled: false
     teamsWebhook: ${TEAM_B_TEAMS_WEBHOOK}
 --
+notificationConfig:
+  teamAWebhook: ${TEAM_A_TEAMS_WEBHOOK}
+--
+  
