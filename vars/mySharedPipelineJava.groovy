@@ -1,4 +1,4 @@
-@Library('shared-library-jenkins') _
+@Library('shared-library-jenkins')_
 def configUtils = loadConfig()
 
 // def configFile = "${WORKSPACE}/params.yaml" // Assuming the YAML file is in the Jenkins job's workspace
