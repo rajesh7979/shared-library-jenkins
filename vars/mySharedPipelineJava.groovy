@@ -12,7 +12,7 @@ def configUtils = loadConfig()
                    // Use Trivy configuration values as needed
 // def severityThreshold = trivyConfig.severityThreshold
 // def vulnThreshold = trivyConfig.vulnThreshold
-
+def call(String repositoryURL) {
 pipeline {
   agent any
  /* tools {
@@ -45,17 +45,19 @@ pipeline {
       stage ('clean workspace') {
       steps {
         cleanWorkspace()
-        }
+        }  
       }
-        stage('Git Checkout'){
-        when { expression { params.action == 'create'} }
-            steps{
-                    gitCheckout(
-                        branch: "main",
-                        url: "https://github.com/rajesh7979/Demo_app1.git"
-                    )             
-            }     
-        }     
+        
+      stage('Checkout Repository') {
+        when { expression { params.action == 'create'} }		      
+                steps {
+                    script {
+                        // Checkout the repository dynamically based on the passed URL
+                        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: repositoryURL]]])
+                    }
+                }
+            }
+                    
         stage('Maven Build'){
         when { expression { params.action == 'create'} }
 
@@ -255,6 +257,8 @@ def sendTeamsNotification(webhookUrl, message, color) {
     """
     sh "curl -X POST -H 'Content-Type: application/json' -d '${payload}' ${WEBHOOK_URL}"
 }  
+}
+	
 
 /*def sendTeamsNotification(webhookUrl, message) {
     def payload = "{\"text\": \"${message}\"}"
