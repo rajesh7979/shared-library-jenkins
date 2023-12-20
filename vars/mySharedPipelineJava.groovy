@@ -226,15 +226,7 @@ post {
                 def teamAWebhook = config.teamAWebhook
                 echo "Failure! Team A Webhook URL: ${teamAWebhook}"
                 sendTeamsNotification('${WEBHOOK_URL}', "Build Failed", "alert")
-               
-              //  def teamAConfig = new NotificationConfig().getTeamNotification('teamA')
-               
-            //    def teamBConfig = new NotificationConfig().getTeamNotification('teamB')
-
-      //          if (teamAConfig.notificationEnabled) {
-          //          sendTeamsMessage(teamAConfig.teamsWebhook, "Build Failure: Team A")
-//                }
-
+           
              //   if (teamBConfig.notificationEnabled) {
               //      sendTeamsMessage(teamBConfig.teamsWebhook, "Build Failure: Team B")
              //   }
@@ -243,6 +235,8 @@ post {
     }        
 
   }    
+}	
+	
   
 def sendTeamsNotification(webhookUrl, message, color) {
     def currentBuildUrl = "${env.BUILD_URL}"
@@ -257,7 +251,7 @@ def sendTeamsNotification(webhookUrl, message, color) {
     """
     sh "curl -X POST -H 'Content-Type: application/json' -d '${payload}' ${WEBHOOK_URL}"
 }  
-}
+
 	
 
 /*def sendTeamsNotification(webhookUrl, message) {
