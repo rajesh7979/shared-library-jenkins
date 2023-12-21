@@ -298,9 +298,8 @@ post {
 
   }    
 	
-	
-  
-def sendTeamsNotification(webhookUrl, message, color) {
+}	
+  def sendTeamsNotification(webhookUrl, message, color) {
     def currentBuildUrl = "${env.BUILD_URL}"
     def buildNumber = "${env.BUILD_NUMBER}"
     def jobName = "${env.JOB_NAME}"
@@ -312,11 +311,8 @@ def sendTeamsNotification(webhookUrl, message, color) {
     }
     """
     sh "curl -X POST -H 'Content-Type: application/json' -d '${payload}' ${WEBHOOK_URL}"
-}  
-}
+  }  
+
 	
 
-/*def sendTeamsNotification(webhookUrl, message) {
-    def payload = "{\"text\": \"${message}\"}"
-    sh "curl -X POST -H 'Content-Type: application/json' -d '${payload}' ${WEBHOOK_URL}"
-}*/
+
