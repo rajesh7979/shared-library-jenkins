@@ -7,5 +7,6 @@ def call(Map params) {
         
         // Building Docker image using the provided Dockerfile path, image name, and tag
         sh "docker build -t ${imageName}:${imageTag} -f ${dockerfilePath} ."
+        sh "docker images"
     }
 }
