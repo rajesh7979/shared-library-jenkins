@@ -1,5 +1,6 @@
 // @Library('share-lib') _
 //mySharedPipelineJava('https://github.com/your-username/your-repo.git')
+def myMethod() {
 @Library('shared-library-jenkins') _
 def configUtils = loadConfig()
 
@@ -312,7 +313,7 @@ def sendTeamsNotification(webhookUrl, message, color) {
     """
     sh "curl -X POST -H 'Content-Type: application/json' -d '${payload}' ${WEBHOOK_URL}"
 }  
-
+}
 	
 
 /*def sendTeamsNotification(webhookUrl, message) {
