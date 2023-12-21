@@ -1,6 +1,6 @@
-// Jenkins Shared Library: Docker.groovy
+// vars/Docker.groovy
 
-def buildDockerImage(String dockerDirectory, String dockerfilePath, String imageName) {
+def callBuildDockerImage(String dockerDirectory, String dockerfilePath, String imageName) {
     def dockerCmd = "docker build -t $imageName -f $dockerfilePath $dockerDirectory"
     
     def proc = dockerCmd.execute()
@@ -13,4 +13,4 @@ def buildDockerImage(String dockerDirectory, String dockerfilePath, String image
     return imageName
 }
 
-// Other functions for managing Docker images, like pushing, tagging, etc.
+// Other Docker-related functions could be defined here as standalone functions
