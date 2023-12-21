@@ -1,6 +1,11 @@
 // File: vars/mavenTasks.groovy
+def call(){
+    sh "chmod +x scripts/mvnw" 
+    sh 'scripts/mvnw clean package'
+}
 
-def call(String projectDirectory, String mvnCommand) {
+
+/*def call(String projectDirectory, String mvnCommand) {
     return {
         dir(projectDirectory) {
             // Set permissions for the directory
@@ -10,4 +15,4 @@ def call(String projectDirectory, String mvnCommand) {
             sh "${mvnCommand}"
         }
     }
-}
+}*/
