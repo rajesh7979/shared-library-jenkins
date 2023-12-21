@@ -1,12 +1,16 @@
-def call(Map params) {
-    return {
-        // Extract parameters or provide defaults
-        def dockerfilePath = params.dockerfilePath ?: 'docker/Dockerfile'
-        def imageName = params.imageName ?: 'cartapp'
-        def imageTag = params.imageTag ?: 'latest'  // Default tag is 'latest'
-        
-        // Building Docker image using the provided Dockerfile path, image name, and tag
-        sh "docker build -t ${imageName}:${imageTag} -f ${dockerfilePath} ."
-        sh "docker images"
+// Jenkins Shared Library: Docker.groovy
+
+def buildDockerImage(String dockerDirectory, String dockerfilePath, String imageName) {
+    def dockerCmd = "docker build -t $imageName -f $dockerfilePath $dockerDirectory"
+    
+    def proc = dockerCmd.execute()
+    proc.waitFor()
+
+    if (proc.exitValue() != 0) {
+        throw new Exception("Failed to build Docker image")
     }
+
+    return imageName
 }
+
+// Other functions for managing Docker images, like pushing, tagging, etc.
