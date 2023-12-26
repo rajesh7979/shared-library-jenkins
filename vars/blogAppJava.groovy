@@ -1,7 +1,6 @@
 // @Library('share-lib') _
 //mySharedPipelineJava('https://github.com/your-username/your-repo.git')
-def myMethod() {
-@Library('shared-library-jenkins@main') _
+// @Library('shared-library-jenkins@main') _
 def configUtils = loadConfig()
 
 // def configFile = "${WORKSPACE}/params.yaml" // Assuming the YAML file is in the Jenkins job's workspace
@@ -297,8 +296,7 @@ post {
     }        
 
   }    
-	
-}	
+		
   def sendTeamsNotification(webhookUrl, message, color) {
     def currentBuildUrl = "${env.BUILD_URL}"
     def buildNumber = "${env.BUILD_NUMBER}"
