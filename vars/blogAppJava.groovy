@@ -1,6 +1,6 @@
 // @Library('share-lib') _
 //mySharedPipelineJava('https://github.com/your-username/your-repo.git')
-// @Library('shared-library-jenkins@main') _
+@Library('shared-library-jenkins@main') _
 def configUtils = loadConfig()
 
 // def configFile = "${WORKSPACE}/params.yaml" // Assuming the YAML file is in the Jenkins job's workspace
